@@ -21,11 +21,9 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <!--<Button  Padding="2" >-->
                     <Grid Background="Black" >
                         <Image  Source="{Binding User.UserIcon}" Height="60"  Width="60"  Stretch="Uniform" />
                     </Grid>
-                    <!--</Button>-->
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
