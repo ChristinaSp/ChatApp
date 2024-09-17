@@ -68,7 +68,7 @@ namespace ChatApp
                 var viewModel = DataContext as MainWindowViewModel;
                 if (viewModel != null && viewModel.AddMessageCommand.CanExecute(null)&& sender!=null)
                 {
-                    viewModel.AddMessageCommand.Execute((sender as TextBox).Text);
+                    viewModel.AddMessageCommand.Execute(null);
                     e.Handled = true;
                 }
             }

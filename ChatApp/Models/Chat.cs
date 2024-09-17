@@ -9,20 +9,18 @@ namespace ChatApp.Models
 {
     internal class Chat
     {
-        private string _userName;
-        private string _userIcon;
+        private User _user; 
         private ObservableCollection<Message> _messages;
         private bool _hasUnreadMessages;
 
-        public Chat(string name,string icon, ObservableCollection<Message> messages, bool hasUnreadMessages=false)
+        public Chat(User user,ObservableCollection<Message> messages, bool hasUnreadMessages=false)
         {
             _hasUnreadMessages = hasUnreadMessages;
-            _userName = name;
+            _user = user;
              _messages = messages;
-            _userIcon = icon;
+             
         }
-        public string UserName { get => _userName; set => _userName = value; }
-        public string UserIcon { get => _userIcon; set => _userIcon = value; }
+        public User User { get => _user; set => _user = value; } 
         public ObservableCollection<Message> Messages { get => _messages; set => _messages = value; }
         public bool HasUnreadMessages { get => _hasUnreadMessages; set => _hasUnreadMessages = value; }
 

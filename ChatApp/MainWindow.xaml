@@ -12,7 +12,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <ListBox Margin="10 0 10 -10" ItemsSource="{Binding Chats}"    IsSynchronizedWithCurrentItem="True"
-                 SelectedItem="{Binding SelectedChat}" 
+                 SelectedItem="{Binding SelectedChat,Mode=TwoWay}" 
                  Grid.Row="0">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -21,12 +21,15 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Button Height="60" Width="60" Padding="2" >
-                        <Image Source="{Binding UserIcon}"  Stretch="Uniform" />
-                    </Button>
+                    <!--<Button  Padding="2" >-->
+                    <Grid Background="Black" >
+                        <Image  Source="{Binding User.UserIcon}" Height="60"  Width="60"  Stretch="Uniform" />
+                    </Grid>
+                    <!--</Button>-->
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+       
         <Grid Grid.Row="1">
         <ListBox ItemsSource="{Binding Messages}" SelectedItem="{Binding SelectedMessage}"
          Margin="10,10,10,60">
@@ -36,8 +39,8 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <TextBox x:Name="newText"  PreviewKeyDown="newText_PreviewKeyDown"  VerticalAlignment="Bottom" Margin="10,0,80,10"/>
-        <Button Command="{Binding AddMessageCommand}" CommandParameter="{Binding Text, ElementName=newText}" Content="Send" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,10"/>
+        <TextBox   Text="{Binding InputText,UpdateSourceTrigger=PropertyChanged}" PreviewKeyDown="newText_PreviewKeyDown"  VerticalAlignment="Bottom" Margin="10,0,80,10"/>
+        <Button Command="{Binding AddMessageCommand}"   Content="Send" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,10"/>
      </Grid>
     </Grid>
 </Window>

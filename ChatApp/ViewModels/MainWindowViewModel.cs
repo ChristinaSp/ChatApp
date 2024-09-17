@@ -19,18 +19,20 @@ namespace ChatApp
         private ObservableCollection<Message> _messages;
         private Message _selectedMessage;
         private ObservableCollection<Chat> _chats;
+        private Chat _selectedChat;
+        private string _inputText;
 
         public MainWindowViewModel()
         {
             _messages = new ObservableCollection<Message>();
             _chats = new ObservableCollection<Chat>();
-            _chats.Add(new Chat("Drake", "C:\\Users\\Admin\\source\\repos\\ChatApp\\ChatApp\\Icons\\ChatPicturesExample.png", new ObservableCollection<Message>()));
-            _chats.Add(new Chat("Filip", "C:\\Users\\Admin\\source\\repos\\ChatApp\\ChatApp\\Icons\\ChatPicturesExample1.png", new ObservableCollection<Message>()));
+            _chats.Add(new Chat( new User("Drake", "pack://application:,,,/Icons/ChatPicturesExample.png"), new ObservableCollection<Message>()));
+            _chats.Add(new Chat(new User("Filip", "pack://application:,,,/Icons/ChatPicturesExample1.png"), new ObservableCollection<Message>()));
 
-            _chats.Add(new Chat("Omego", "C:\\Users\\Admin\\source\\repos\\ChatApp\\ChatApp\\Icons\\ChatPicturesExample2.png", new ObservableCollection<Message>()));
+            _chats.Add(new Chat(new User("Omego", "pack://application:,,,/Icons/ChatPicturesExample2.png"), new ObservableCollection<Message>()));
 
-            _chats.Add(new Chat("Freyp", "C:\\Users\\Admin\\source\\repos\\ChatApp\\ChatApp\\Icons\\ChatPicturesExample3.png", new ObservableCollection<Message>()));
-
+            _chats.Add(new Chat(new User("Freyp", "pack://application:,,,/Icons/ChatPicturesExample3.png"), new ObservableCollection<Message>()));
+            SelectedChat = Chats.FirstOrDefault();
         }
         #region Properties
 
@@ -61,6 +63,28 @@ namespace ChatApp
                 RaisePropertyChanged();
             }
         }
+         
+        public Chat SelectedChat
+        {
+            get => _selectedChat;
+            set
+            {
+                _selectedChat = value;
+                Messages = SelectedChat.Messages;
+                InputText = null;
+                RaisePropertyChanged();
+            }
+        }
+         
+        public string InputText
+        {
+            get => _inputText;
+            set
+            {
+                _inputText = value;
+                RaisePropertyChanged();
+            }
+        }
         #endregion
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -70,10 +94,9 @@ namespace ChatApp
         public ICommand AddMessageCommand => _addMessageCommand ?? (_addMessageCommand = new RelayCommand(
 (param) =>
 
-{
- var newMassage = param?.ToString();
- if (newMassage != null)
-     Messages.Add(new Message(newMassage));
+{ 
+ if (InputText != null)
+     Messages.Add(new Message(InputText));
 }));
         protected virtual void RaisePropertyChanged([CallerMemberName] string propertyName = "")
         {

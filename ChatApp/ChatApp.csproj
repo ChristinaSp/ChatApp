@@ -8,4 +8,20 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Icons\ChatPicturesExample.png" />
+    <None Remove="Icons\ChatPicturesExample1.png" />
+    <None Remove="Icons\ChatPicturesExample2.png" />
+    <None Remove="Icons\ChatPicturesExample3.png" />
+    <None Remove="Icons\UserforChat.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\ChatPicturesExample.png" />
+    <Resource Include="Icons\ChatPicturesExample1.png" />
+    <Resource Include="Icons\ChatPicturesExample2.png" />
+    <Resource Include="Icons\ChatPicturesExample3.png" />
+    <Resource Include="Icons\UserforChat.png" />
+  </ItemGroup>
+
 </Project>
