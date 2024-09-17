@@ -61,6 +61,17 @@ namespace ChatApp
             storyboard.Begin(this);
         }
 
-      
+        private void newText_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                var viewModel = DataContext as MainWindowViewModel;
+                if (viewModel != null && viewModel.AddMessageCommand.CanExecute(null)&& sender!=null)
+                {
+                    viewModel.AddMessageCommand.Execute((sender as TextBox).Text);
+                    e.Handled = true;
+                }
+            }
+        }
     }
 }

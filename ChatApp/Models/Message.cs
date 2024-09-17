@@ -7,19 +7,21 @@ using System.Threading.Tasks;
 namespace ChatApp.Models
 {
     internal class Message
-    {
-        private int _id;
+    {    
         private string _content;
-        private string _author;
-
-        public Message(string content,int id=0,string autor="")
+        private string _senderName;
+        private string _senderIcon;
+        private DateTime _sentTime;
+        public Message(string content, string senderName = "", string senderIcon = "", DateTime dateTime =new DateTime())
         {
             _content = content;
-            _id = id;
-            _author = autor;
+            _senderName = senderName;
+            _senderIcon = senderIcon;
+            _sentTime = dateTime;
         }
-        public int Id { get => _id; set => _id = value; }
-        public string Author { get => _author; set => _author = value; }
+        public string SenderName { get => _senderName; set => _senderName = value; }
         public string Content { get => _content; set => _content = value; }
+        public string SenderIcon1 { get => _senderIcon; set => _senderIcon = value; }
+        public DateTime SentTime1 { get => _sentTime; set => _sentTime = value; }
     }
 }

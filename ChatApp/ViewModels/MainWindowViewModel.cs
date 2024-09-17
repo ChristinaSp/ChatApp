@@ -18,13 +18,31 @@ namespace ChatApp
         private ICommand _addMessageCommand;
         private ObservableCollection<Message> _messages;
         private Message _selectedMessage;
+        private ObservableCollection<Chat> _chats;
 
         public MainWindowViewModel()
         {
             _messages = new ObservableCollection<Message>();
+            _chats = new ObservableCollection<Chat>();
+            _chats.Add(new Chat("Drake", "C:\\Users\\Admin\\source\\repos\\ChatApp\\ChatApp\\Icons\\ChatPicturesExample.png", new ObservableCollection<Message>()));
+            _chats.Add(new Chat("Filip", "C:\\Users\\Admin\\source\\repos\\ChatApp\\ChatApp\\Icons\\ChatPicturesExample1.png", new ObservableCollection<Message>()));
+
+            _chats.Add(new Chat("Omego", "C:\\Users\\Admin\\source\\repos\\ChatApp\\ChatApp\\Icons\\ChatPicturesExample2.png", new ObservableCollection<Message>()));
+
+            _chats.Add(new Chat("Freyp", "C:\\Users\\Admin\\source\\repos\\ChatApp\\ChatApp\\Icons\\ChatPicturesExample3.png", new ObservableCollection<Message>()));
 
         }
         #region Properties
+
+        public ObservableCollection<Chat>  Chats
+        {
+            get => _chats;
+            set
+            {
+                _chats = value;
+                RaisePropertyChanged();
+            }
+        }
         public ObservableCollection<Message> Messages
         {
             get => _messages;
